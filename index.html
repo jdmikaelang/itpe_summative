@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chen & Brent</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+  <style>
+  :root {
+    --main-color: #738561;
+    --secondary-color: #f6f2e7;
+    --font-heading: 'Imperial Script', cursive;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--secondary-color);
+    color: #333;
+    line-height: 1.7;
+  }
+
+  body.loaded section {
+    animation: fadeIn 1s ease-in-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--main-color);
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+  }
+
+  h3:hover {
+    color: var(--main-color);
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+  }
+
+  p {
+    font-size: 1.125rem;
+    text-align: center;
+    max-width: 720px;
+    margin: 1rem auto;
+  }
+
+  section {
+    padding: 5rem 2rem;
+  }
+
+  .hero {
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .hero p {
+    margin-top: 1.25rem;
+  }
+
+  .button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 2rem;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1.5px solid var(--main-color);
+    color: var(--main-color);
+    letter-spacing: 2px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: var(--main-color);
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .button:active {
+    transform: scale(0.98);
+  }
+
+  .fairy-tale {
+    background-color: var(--main-color);
+    color: white;
+    text-align: center;
+  }
+
+  .fairy-tale h2 {
+    color: white;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .fairy-tale p {
+    font-style: italic;
+    line-height: 2;
+  }
+
+  .countdown-photo {
+    height: 100vh;
+    background: url('walking.jpg') center center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--secondary-color);
+    padding: 0 2rem;
+  }
+
+  .countdown-photo h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    transition: text-shadow 0.3s ease;
+  }
+
+  .countdown-photo h2:hover {
+    text-shadow: 0 2px 10px rgba(246, 242, 231, 0.5);
+  }
+
+  #countdown-timer {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .faq {
+    padding: 4rem 2rem 5rem;
+  }
+
+  .rsvp {
+    background-color: var(--main-color);
+    color: white;
+  }
+
+  .rsvp h2 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .rsvp-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 3rem auto 0;
+  }
+
+  form {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 12px;
+    color: #333;
+    transition: transform 0.3s ease;
+  }
+
+  form:hover {
+    transform: scale(1.03);
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  form input,
+  form select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-radius: 8px;
+  }
+
+  form button {
+    background-color: transparent;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    padding: 0.75rem;
+    width: 100%;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  form button:hover {
+    background-color: var(--main-color);
+    color: white;
+  }
+
+  .guest-list {
+    background-color: var(--secondary-color);
+    color: #333;
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .carousel {
+    overflow: hidden;
+    padding: 3rem 0;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+  }
+
+  .carousel-track img {
+    height: 250px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  #loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
+
+  #loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .loader-spinner {
+    border: 4px solid #ccc;
+    border-top: 4px solid var(--main-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* RSVP Invited By Buttons */
+  .invited-by-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .invited-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1.5px solid var(--main-color);
+    border-radius: 4px;
+    cursor: pointer;
+    background: white;
+    color: var(--main-color);
+    font-weight: 600;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .invited-btn.selected,
+  .invited-btn:active {
+    background: var(--main-color);
+    color: white;
+  }
+  .invited-radio {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-track img { height: 180px; }
+    .rsvp-wrapper { flex-direction: column; align-items: center; }
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 3rem; }
+    h2, .rsvp h2 { font-size: 2.25rem; }
+    .fairy-tale h2 { font-size: 2.75rem; }
+    .fairy-tale p { font-size: 1rem; }
+  }
+</style>
+</head>
+
+<body>
+  <div id="loader"><div class="loader-spinner"></div></div>
+
+  <div class="hero">
+    <h1>Chen & Brent</h1>
+    <p><strong>Together forever on November 14, 2025</strong><br>3 o'clock in the afternoon<br>Fort Lorenzo City Hall</p>
+    <a href="#rsvp" class="button">CLICK HERE TO RSVP</a>
+  </div>
+
+  <section class="countdown-photo">
+    <h2>Countdown to Our Forever</h2>
+    <div id="countdown-timer">Loading...</div>
+  </section>
+
+  <!-- RSVP Section -->
+  <section class="rsvp" id="rsvp">
+    <h2>We’d Love to See You There!</h2>
+    <p style="font-family: var(--font-heading); font-size: 2.5rem; text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">
+      We’d love for you to be part of our special day!
+    </p>
+    <div class="rsvp-wrapper">
+      <form id="rsvp-form">
+        <label for="guests">How Many Guests are Coming?</label>
+        <select id="guests" name="guests" onchange="generateNameFields(this.value)" required>
+          <option value="">Select number</option>
+          <option value="1">1 Guest</option>
+          <option value="2">2 Guests</option>
+          <option value="3">3 Guests</option>
+          <option value="4">4 Guests</option>
+          <option value="5">5 Guests</option>
+        </select>
+        <div id="guest-names"></div>
+        <label style="margin-bottom: 0.5rem; font-weight: 600;">Invited by?</label>
+        <div class="invited-by-group">
+          <input type="radio" id="invited-bride" class="invited-radio" name="invited_by" value="Bride" required />
+          <label for="invited-bride" class="invited-btn">Bride</label>
+          <input type="radio" id="invited-groom" class="invited-radio" name="invited_by" value="Groom" required />
+          <label for="invited-groom" class="invited-btn">Groom</label>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+
+      <div class="guest-list">
+        <h3 style="font-family: var(--font-body); font-size: 1.75rem; color: var(--main-color); margin-bottom: 1rem; text-align: center;">Confirmed RSVPs</h3>
+        <div id="guest-list" style="max-height: 300px; overflow-y: auto; font-size: 1rem; line-height: 1.8;"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function generateNameFields(count) {
+      const container = document.getElementById('guest-names');
+      container.innerHTML = '';
+      count = parseInt(count);
+      for (let i = 1; i <= count; i++) {
+        const label = document.createElement('label');
+        label.setAttribute('for', 'guest' + i);
+        label.textContent = 'Full Name of Attendee ' + i + ':';
+
+        const input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('id', 'guest' + i);
+        input.setAttribute('name', 'guest' + i);
+        input.required = true;
+
+        container.appendChild(label);
+        container.appendChild(input);
+      }
+    }
+
+    // RSVP Invited By Button Highlight
+    document.addEventListener('DOMContentLoaded', function () {
+      const invitedBtns = document.querySelectorAll('.invited-btn');
+      invitedBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          invitedBtns.forEach(b => b.classList.remove('selected'));
+          this.classList.add('selected');
+        });
+      });
+    });
+
+    const countdownTarget = new Date("November 14, 2025 15:00:00").getTime();
+    const countdownEl = document.getElementById("countdown-timer");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = countdownTarget - now;
+
+      if (diff <= 0) {
+        countdownEl.innerHTML = "It's the big day!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      document.body.classList.add("loaded");
+      setTimeout(() => loader.classList.add("hidden"), 500);
+    });
+
+    document.getElementById("rsvp-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      fetch("https://script.google.com/macros/s/AKfycbzsrsE64eRlXBKgP_owEin9e7U6qrGsW4qbsNzls3EQsZGE-9TJWu2pO84PRLdGPcS6bA/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "confirmed.html";
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      })
+      .catch(error => alert("Error: " + error));
+    });
+
+    // Fetch guest list on page load
+    function loadGuestList() {
+      fetch("https://script.google.com/macros/s/AKfycbzsrsE64eRlXBKgP_owEin9e7U6qrGsW4qbsNzls3EQsZGE-9TJWu2pO84PRLdGPcS6bA/exec")
+        .then(response => response.json())
+        .then(data => {
+          const guestList = document.getElementById("guest-list");
+          guestList.innerHTML = "";
+
+          if (Array.isArray(data) && data.length > 0) {
+            data.forEach(entry => {
+              const div = document.createElement("div");
+              // Show guest names and invited by
+              div.textContent = entry.name + (entry.invited_by ? ` (Invited by: ${entry.invited_by})` : "");
+              guestList.appendChild(div);
+            });
+          } else {
+            guestList.innerHTML = `<div style="color: #999;">No confirmed RSVPs yet.</div>`;
+          }
+        })
+        .catch(error => {
+          const guestList = document.getElementById("guest-list");
+          guestList.innerHTML = `<div style="color: red;">Failed to load guest list.</div>`;
+          console.error("Guest list fetch error:", error);
+        });
+    }
+
+    // Load guest list on DOMContentLoaded
+    document.addEventListener("DOMContentLoaded", loadGuestList);
+  </script>
+</body>
+</html>

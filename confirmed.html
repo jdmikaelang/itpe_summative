@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You!</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --main-color: #738561;
+      --secondary-color: #f6f2e7;
+      --font-heading: 'Imperial Script', cursive;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: url('IMG_0599.jpg') center center/cover no-repeat fixed;
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 3rem 2rem;
+      background-color: rgba(246, 242, 231, 0.9);
+      border-radius: 16px;
+      color: #333;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      color: var(--main-color);
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      text-decoration: none;
+      color: var(--main-color);
+      border: 2px solid var(--main-color);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    a.button:hover {
+      background-color: var(--main-color);
+      color: white;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>Thank You!</h1>
+    <p>Your RSVP has been received. We can't wait to celebrate with you!</p>
+    <a href="index.html" class="button">Back to Home</a>
+  </div>
+</body>
+</html>
